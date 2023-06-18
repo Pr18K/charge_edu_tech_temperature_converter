@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body{
+            background-color:rgb(141, 43, 226);
+            padding: 100px 100px;
+        }
+        h1{
+            text-align: center;
+        }
+        #container{
+            
+            text-align: center;
+            padding: 50px;
+            background-color:violet;
+        }
+        .input-div{
+            display:inline-block;
+        }
+        .inp{
+            padding: 10px;
+            margin: 50px;
+            font-size: 50px;
+            font-weight: bold;
+            width: 250px;
+            text-align: center;
+        }
+        label{
+            font-size: 22px;
+           
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <div id="container">
+        <div class="input-div">
+            <label>VALUE IN CELSIUS:</label><br>
+            <input type="number" value="0" id="celsius" class="inp">
+            </div>
+            <div class="input-div">
+
+            <label>VALUE IN FAHRENHEIT:</label><br>
+            <input type="number"value="32" id="fahrenheit" class="inp">
+            </div>
+            <div class="input-div">
+
+            <label>VALUE IN KELVIN:</label><br>
+            <input type="number" value="273.15" id="kelvin" class="inp">
+            </div>
+            <div class="input-div">
+
+         </div>
+    </div>
+    <script>
+        var celsius= document.getElementById("celsius");
+        var fahrenheit= document.getElementById("fahrenheit");
+        var kelvin= document.getElementById("kelvin");
+
+        celsius.addEventListener('input', function(){
+            let c= this.value;
+            let f= (c*9/5)+32;
+            let k= (c/1)+273.15;
+            if(!Number.isInteger(f)){
+                f=f.toFixed(4);
+            }
+            fahrenheit.value= f;
+            if(!Number.isInteger(k)){
+                k=k.toFixed(4);
+            }
+            kelvin.value= k;
+        });
+
+        fahrenheit.addEventListener('input', function(){
+            let f= this.value;
+            let c= (f-32)*5/9;
+            let k= (f-32)*5/9+273.15;
+            if(!Number.isInteger(c)){
+                c=c.toFixed(4);
+            }
+            celsius.value= c;
+            if(!Number.isInteger(k)){
+                k=k.toFixed(4);
+            }
+            kelvin.value= k;
+        });
+
+        kelvin.addEventListener('input', function(){
+            let k= this.value;
+            let c= k-273.15;
+            let f= c*9/5+32;
+            if(!Number.isInteger(c)){
+                c=c.toFixed(4);
+            }
+            celsius.value= c;
+            if(!Number.isInteger(f)){
+                f=f.toFixed(4);
+            }
+            fahrenheit.value= f;
+        });
+    </script>
+</body>
+</html>
